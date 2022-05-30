@@ -15,6 +15,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// scrapping
 const getData = async () => {
     const articles = []
     await axios(url).then(response => {
@@ -31,6 +32,7 @@ const getData = async () => {
     return articles
 }
 
+// routing
 app.get('/', (req, res) => {
     getData().then(articles => {
         res.status(200).json(articles)
@@ -40,4 +42,5 @@ app.get('/', (req, res) => {
     })
 })
 
+// server
 app.listen(PORT, () => console.log(`App running on PORT ${PORT}`))
